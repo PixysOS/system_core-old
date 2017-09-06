@@ -117,7 +117,9 @@ bool EnsurePathMounted(Fstab* fstab, const std::string& path, const std::string&
         return false;
     }
 
-    if (fs_mgr_do_mount_one(*rec, mount_point) == -1) {
+    int result = fs_mgr_do_mount_one(*rec, mount_point);
+
+    if (result == -1) {
         PERROR << "Failed to mount " << mount_point;
         return false;
     }
