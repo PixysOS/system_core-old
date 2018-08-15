@@ -25,6 +25,8 @@ namespace android {
 namespace init {
 
 extern uint32_t (*property_set)(const std::string& name, const std::string& value);
+extern void import_kernel_cmdline(bool in_qemu,
+                           const std::function<void(const std::string&, const std::string&, bool)>&);
 
 uint32_t HandlePropertySet(const std::string& name, const std::string& value,
                            const std::string& source_context, const ucred& cr, std::string* error);
